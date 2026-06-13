@@ -1,0 +1,17 @@
+class Solution {
+    
+    public int countSubstrings(String s) {
+        boolean dp[][] = new boolean[s.length()][s.length()];
+        int count = 0;
+        int n = s.length();
+        for(int i = n-1;i>=0;i--){
+            for(int j = i; j<n;j++){
+                if(s.charAt(i)==s.charAt(j) && (j-i+1<=2 || dp[i+1][j-1]==true)){
+                    dp[i][j] = true;
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
